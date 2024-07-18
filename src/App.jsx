@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import './App.css';
 import { useEffect } from 'react';
-import classes from './styles.module.css'
+import classes from './styles.module.css';
+import TodoItem from './components/todo-item';
 
 function App() {
   const [todoList, setTodoList] = useState([]);
@@ -35,10 +36,18 @@ function App() {
     getTodos(url);
   }, []);
 
+  if (loading) {
+    return <p>Loading...</p>;
+  }
   return (
-    <>
+    <div className="todoWrapper">
       <h1 className={classes.headerTitle}>Simple ToDo App</h1>
-    </>
+      <div className={classes.todoList}>
+        {todoList && todoList?.length > 0
+          ? todoList.map(todo => <TodoItem key={todo.id} todo={todo} />)
+          : null}
+      </div>
+    </div>
   );
 }
 
