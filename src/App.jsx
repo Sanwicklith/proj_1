@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import { useEffect } from 'react';
+import classes from './styles.module.css'
 
 function App() {
   const [todoList, setTodoList] = useState([]);
@@ -36,7 +37,7 @@ function App() {
 
   return (
     <>
-      <h1>Simple ToDo App</h1>
+      <h1 className={classes.headerTitle}>Simple ToDo App</h1>
     </>
   );
 }
